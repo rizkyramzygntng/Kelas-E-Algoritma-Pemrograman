@@ -156,9 +156,7 @@ flowchart TD
 | 1         |      5 |      5 |      5 | Ketiga sisi sama dan memenuhi syarat segitiga      | Segitiga sama sisi             |
 | 2         |      5 |      5 |      8 | Dua sisi sama dan memenuhi syarat segitiga         | Segitiga sama kaki             |
 | 3         |      5 |      6 |      8 | Ketiga sisi berbeda dan memenuhi syarat segitiga   | Segitiga sembarang             |
-| 4         |      3 |      4 |      5 | Ketiga sisi berbeda dan memenuhi syarat segitiga   | Segitiga sembarang             |
-| 5         |      2 |      3 |     10 | Tidak memenuhi syarat segitiga                     | Tidak dapat membentuk segitiga |
-| 6         |      2 |      3 |      5 | Jumlah dua sisi tidak lebih besar dari sisi ketiga | Tidak dapat membentuk segitiga |
+| 4         |      2 |      3 |     10 | Tidak memenuhi syarat segitiga                     | Tidak dapat membentuk segitiga |
 
 ---
 
@@ -176,7 +174,7 @@ sisi2 = int(input("Masukkan panjang sisi 2: "))
 sisi3 = int(input("Masukkan panjang sisi 3: "))
 
 if sisi1 + sisi2 <= sisi3 or sisi1 + sisi3 <= sisi2 or sisi2 + sisi3 <= sisi1:
-    print("Ketiga sisi tersebut tidak dapat membentuk segitiga")
+    print("Yahhh....Ketiga sisi tersebut tidak bisa membentuk segitiga")
 elif sisi1 == sisi2 and sisi2 == sisi3:
     print("Segitiga sama sisi")
 elif sisi1 == sisi2 or sisi1 == sisi3 or sisi2 == sisi3:
