@@ -190,12 +190,15 @@ else:
 Program telah diuji menggunakan beberapa kombinasi panjang sisi untuk memastikan bahwa program dapat menentukan validitas dan jenis segitiga dengan benar.
 
 Pada pengujian pertama, digunakan sisi **5, 5, dan 5**. Ketiga sisi memenuhi syarat segitiga dan memiliki panjang yang sama, sehingga program menghasilkan **"Segitiga sama sisi"**.
-
+<img width="932" height="172" alt="Screenshot 2026-09-02 132729" src="https://github.com/user-attachments/assets/58f3738a-85f5-44c0-bf30-8242c75b363e" />
 Pada pengujian kedua, digunakan sisi **5, 5, dan 8**. Ketiga sisi memenuhi syarat segitiga dan terdapat dua sisi yang sama, sehingga program menghasilkan **"Segitiga sama kaki"**.
+<img width="923" height="130" alt="Screenshot 2026-09-02 132751" src="https://github.com/user-attachments/assets/5b3e38ef-b759-4cad-b799-d6a3166a331a" />
 
 Pada pengujian ketiga, digunakan sisi **5, 6, dan 8**. Ketiga sisi memenuhi syarat segitiga dan memiliki panjang yang berbeda, sehingga program menghasilkan **"Segitiga sembarang"**.
+<img width="927" height="130" alt="Screenshot 2026-09-02 132810" src="https://github.com/user-attachments/assets/ecb7078b-262a-42e3-bee6-ed594028909a" />
 
 Pada pengujian keempat, digunakan sisi **2, 3, dan 10**. Karena jumlah dua sisi tidak lebih besar dari sisi ketiga, ketiga sisi tersebut tidak dapat membentuk segitiga. Program menghasilkan **"Ketiga sisi tersebut tidak dapat membentuk segitiga"**.
+<img width="922" height="127" alt="Screenshot 2026-09-02 132828" src="https://github.com/user-attachments/assets/a9c3d3bc-2f80-44e8-aee9-193522ce6806" />
 
 Berdasarkan hasil pengujian tersebut, program dapat melakukan pengecekan validitas sekaligus menentukan jenis segitiga berdasarkan panjang ketiga sisinya.
 
