@@ -137,10 +137,13 @@ else:
 ## 📸 Hasil Pengujian
 
 Program telah diuji menggunakan tiga kondisi yang berbeda. Pengujian pertama menggunakan panjang sisi **5, 5, dan 5**, sehingga program menghasilkan **"Segitiga sama sisi"**.
+<img width="932" height="168" alt="Screenshot 2026-09-02 130032" src="https://github.com/user-attachments/assets/50ba710a-34fe-4716-bb72-98c9d17ccd24" />
 
 Pengujian kedua menggunakan panjang sisi **5, 5, dan 8**. Karena terdapat dua sisi yang memiliki panjang sama, program menghasilkan **"Segitiga sama kaki"**.
+<img width="925" height="158" alt="Screenshot 2026-09-02 125959" src="https://github.com/user-attachments/assets/287cd606-db22-45e8-8038-843a1980720a" />
 
 Pengujian ketiga menggunakan panjang sisi **4, 5, dan 6**. Karena ketiga sisi memiliki panjang yang berbeda, program menghasilkan **"Segitiga sembarang"**.
+<img width="917" height="140" alt="Screenshot 2026-09-02 130052" src="https://github.com/user-attachments/assets/9962483c-d88b-4f7f-8571-e8d44420d63b" />
 
 Berdasarkan hasil pengujian tersebut, program dapat menentukan jenis segitiga dengan benar sesuai dengan kondisi panjang ketiga sisinya.
 
