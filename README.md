@@ -1,16 +1,20 @@
 # Kelas-E-Algoritma-Pemrograman
 
-# 🧮 Logika Matematika – Menentukan Jenis Segitiga Berdasarkan Panjang Sisi
+# 🧮 Logika Matematika – Menentukan Jenis dan Validitas Segitiga
 
 ## 📝 Deskripsi Masalah
 
-Dalam pembelajaran matematika, segitiga merupakan salah satu bangun datar yang memiliki tiga sisi. Berdasarkan panjang sisinya, segitiga dapat dibedakan menjadi **segitiga sama sisi, segitiga sama kaki, dan segitiga sembarang**.
+Dalam pembelajaran matematika, segitiga merupakan bangun datar yang memiliki tiga sisi. Berdasarkan panjang sisinya, segitiga dapat dibedakan menjadi **segitiga sama sisi, segitiga sama kaki, dan segitiga sembarang**.
 
-Untuk membantu siswa memahami materi tersebut, dibuat sebuah program sederhana yang dapat menentukan jenis segitiga berdasarkan panjang ketiga sisinya. Program akan menerima tiga nilai sebagai input, yaitu panjang sisi pertama, sisi kedua, dan sisi ketiga.
+Namun, tidak semua tiga bilangan yang diberikan dapat membentuk sebuah segitiga. Agar tiga sisi dapat membentuk segitiga, harus memenuhi **syarat ketaksamaan segitiga**, yaitu jumlah panjang dua sisi harus lebih besar daripada panjang sisi ketiga.
 
-Program kemudian membandingkan ketiga sisi tersebut menggunakan logika matematika. Jika ketiga sisi memiliki panjang yang sama, maka segitiga termasuk **segitiga sama sisi**. Jika terdapat dua sisi yang memiliki panjang sama, maka segitiga termasuk **segitiga sama kaki**. Jika ketiga sisi memiliki panjang yang berbeda, maka segitiga termasuk **segitiga sembarang**.
+Program ini dibuat untuk membantu menentukan apakah tiga panjang sisi dapat membentuk sebuah segitiga. Jika ketiga sisi memenuhi syarat, program kemudian menentukan jenis segitiga berdasarkan panjang sisinya.
 
-Program ini menerapkan konsep **perbandingan, operator logika, dan percabangan** untuk menyelesaikan permasalahan matematika secara sederhana dan sistematis.
+Program akan menerima tiga nilai sebagai input, yaitu panjang sisi pertama, sisi kedua, dan sisi ketiga. Program terlebih dahulu memeriksa validitas ketiga sisi menggunakan operator logika. Jika tidak memenuhi syarat segitiga, program akan menampilkan bahwa ketiga sisi tersebut tidak dapat membentuk segitiga.
+
+Jika ketiga sisi valid, program akan menentukan jenis segitiga. Jika ketiga sisi sama, maka termasuk **segitiga sama sisi**. Jika terdapat dua sisi yang sama, maka termasuk **segitiga sama kaki**. Jika ketiga sisi berbeda, maka termasuk **segitiga sembarang**.
+
+Program ini menerapkan konsep **perbandingan, ketaksamaan segitiga, operator logika, dan percabangan `if-elif-else`** dalam menyelesaikan permasalahan matematika.
 
 ---
 
@@ -26,19 +30,40 @@ Program menerima tiga buah nilai berupa panjang sisi segitiga:
 
 ### **Proses**
 
-Program melakukan perbandingan terhadap ketiga panjang sisi:
+Program melakukan dua tahap pemeriksaan.
 
-1. Jika `sisi1 = sisi2` dan `sisi2 = sisi3`, maka segitiga adalah **segitiga sama sisi**.
-2. Jika terdapat dua sisi yang memiliki panjang sama, maka segitiga adalah **segitiga sama kaki**.
-3. Jika ketiga sisi memiliki panjang yang berbeda, maka segitiga adalah **segitiga sembarang**.
+**Tahap 1 – Mengecek validitas segitiga**
+
+Program memeriksa apakah memenuhi semua syarat berikut:
+
+```text
+sisi1 + sisi2 > sisi3
+sisi1 + sisi3 > sisi2
+sisi2 + sisi3 > sisi1
+```
+
+Jika salah satu syarat tidak terpenuhi, maka ketiga sisi tersebut **tidak dapat membentuk segitiga**.
+
+**Tahap 2 – Menentukan jenis segitiga**
+
+Jika ketiga sisi valid:
+
+* Jika `sisi1 = sisi2 = sisi3`, maka **segitiga sama sisi**.
+* Jika terdapat dua sisi yang sama, maka **segitiga sama kaki**.
+* Jika ketiga sisi berbeda, maka **segitiga sembarang**.
 
 ### **Output**
 
-Program menampilkan jenis segitiga berdasarkan panjang ketiga sisinya.
+Program menampilkan:
+
+* **"Ketiga sisi tersebut tidak dapat membentuk segitiga"**, jika sisi tidak memenuhi syarat.
+* **"Segitiga sama sisi"**, jika ketiga sisi sama.
+* **"Segitiga sama kaki"**, jika terdapat dua sisi yang sama.
+* **"Segitiga sembarang"**, jika ketiga sisi berbeda.
 
 ---
 
-## 💻 Pseudocode
+# 💻 Pseudocode
 
 ```text
 START
@@ -47,13 +72,24 @@ INPUT sisi1
 INPUT sisi2
 INPUT sisi3
 
-IF sisi1 = sisi2 AND sisi2 = sisi3 THEN
+IF sisi1 + sisi2 <= sisi3 OR
+   sisi1 + sisi3 <= sisi2 OR
+   sisi2 + sisi3 <= sisi1 THEN
+
+    OUTPUT "Ketiga sisi tersebut tidak dapat membentuk segitiga"
+
+ELSE IF sisi1 = sisi2 AND sisi2 = sisi3 THEN
+
     OUTPUT "Segitiga sama sisi"
 
-ELSE IF sisi1 = sisi2 OR sisi1 = sisi3 OR sisi2 = sisi3 THEN
+ELSE IF sisi1 = sisi2 OR
+        sisi1 = sisi3 OR
+        sisi2 = sisi3 THEN
+
     OUTPUT "Segitiga sama kaki"
 
 ELSE
+
     OUTPUT "Segitiga sembarang"
 
 END IF
@@ -63,7 +99,7 @@ END
 
 ---
 
-## 📊 Flowchart
+# 📊 Flowchart
 
 ```mermaid
 %%{init: {
@@ -79,43 +115,58 @@ END
 
 flowchart TD
     A([START]) --> B[/INPUT sisi1, sisi2, sisi3/]
-    B --> C{Apakah sisi1 = sisi2<br/>dan sisi2 = sisi3?}
 
-    C -->|Ya| D[/OUTPUT<br/>"Segitiga sama sisi"/]
-    C -->|Tidak| E{Apakah ada dua sisi<br/>yang sama?}
+    B --> C{Apakah sisi1+sisi2 <= sisi3<br/>ATAU sisi1+sisi3 <= sisi2<br/>ATAU sisi2+sisi3 <= sisi1?}
 
-    E -->|Ya| F[/OUTPUT<br/>"Segitiga sama kaki"/]
-    E -->|Tidak| G[/OUTPUT<br/>"Segitiga sembarang"/]
+    C -->|Ya| D[/OUTPUT<br/>"Tidak dapat membentuk segitiga"/]
 
-    D --> H([END])
-    F --> H
-    G --> H
+    C -->|Tidak| E{Apakah sisi1 = sisi2<br/>dan sisi2 = sisi3?}
+
+    E -->|Ya| F[/OUTPUT<br/>"Segitiga sama sisi"/]
+
+    E -->|Tidak| G{Apakah ada dua sisi<br/>yang sama?}
+
+    G -->|Ya| H[/OUTPUT<br/>"Segitiga sama kaki"/]
+
+    G -->|Tidak| I[/OUTPUT<br/>"Segitiga sembarang"/]
+
+    D --> J([END])
+    F --> J
+    H --> J
+    I --> J
 
     style A fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
     style B fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
     style C fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f
-    style D fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    style D fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
     style E fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f
-    style F fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#312e81
-    style G fill:#fee2e2,stroke:#dc2626,stroke-width:2px,color:#7f1d1d
-    style H fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    style F fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    style G fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#78350f
+    style H fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#312e81
+    style I fill:#e0e7ff,stroke:#4f46e5,stroke-width:2px,color:#312e81
+    style J fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
 ```
 
 ---
 
-## 🧪 Test Case
+# 🧪 Test Case
 
-| Test Case | Input Sisi 1 | Input Sisi 2 | Input Sisi 3 | Kondisi             | Hasil yang Diharapkan |
-| --------- | -----------: | -----------: | -----------: | ------------------- | --------------------- |
-| 1         |            5 |            5 |            5 | Ketiga sisi sama    | Segitiga sama sisi    |
-| 2         |            5 |            5 |            8 | Dua sisi sama       | Segitiga sama kaki    |
-| 3         |            4 |            5 |            6 | Ketiga sisi berbeda | Segitiga sembarang    |
+| Test Case | Sisi 1 | Sisi 2 | Sisi 3 | Kondisi                                            | Hasil yang Diharapkan          |
+| --------- | -----: | -----: | -----: | -------------------------------------------------- | ------------------------------ |
+| 1         |      5 |      5 |      5 | Ketiga sisi sama dan memenuhi syarat segitiga      | Segitiga sama sisi             |
+| 2         |      5 |      5 |      8 | Dua sisi sama dan memenuhi syarat segitiga         | Segitiga sama kaki             |
+| 3         |      5 |      6 |      8 | Ketiga sisi berbeda dan memenuhi syarat segitiga   | Segitiga sembarang             |
+| 4         |      3 |      4 |      5 | Ketiga sisi berbeda dan memenuhi syarat segitiga   | Segitiga sembarang             |
+| 5         |      2 |      3 |     10 | Tidak memenuhi syarat segitiga                     | Tidak dapat membentuk segitiga |
+| 6         |      2 |      3 |      5 | Jumlah dua sisi tidak lebih besar dari sisi ketiga | Tidak dapat membentuk segitiga |
 
 ---
 
-## 🐍 Implementasi Python
+# 🐍 Implementasi Python
 
-Program dibuat menggunakan bahasa pemrograman **Python** dan dijalankan melalui **Visual Studio Code**. Program menggunakan percabangan `if`, `elif`, dan `else`, serta operator logika `and` dan `or` untuk menentukan jenis segitiga.
+Implementasi program dibuat menggunakan bahasa pemrograman **Python** dan dijalankan melalui **Visual Studio Code**. Program menggunakan percabangan `if`, `elif`, dan `else`, serta operator logika `and` dan `or`.
+
+Program terlebih dahulu mengecek apakah ketiga panjang sisi memenuhi syarat untuk membentuk segitiga. Setelah dinyatakan valid, program akan menentukan jenis segitiga berdasarkan kesamaan panjang sisinya.
 
 ### **Source Code `main.py`**
 
@@ -124,7 +175,9 @@ sisi1 = int(input("Masukkan panjang sisi 1: "))
 sisi2 = int(input("Masukkan panjang sisi 2: "))
 sisi3 = int(input("Masukkan panjang sisi 3: "))
 
-if sisi1 == sisi2 and sisi2 == sisi3:
+if sisi1 + sisi2 <= sisi3 or sisi1 + sisi3 <= sisi2 or sisi2 + sisi3 <= sisi1:
+    print("Ketiga sisi tersebut tidak dapat membentuk segitiga")
+elif sisi1 == sisi2 and sisi2 == sisi3:
     print("Segitiga sama sisi")
 elif sisi1 == sisi2 or sisi1 == sisi3 or sisi2 == sisi3:
     print("Segitiga sama kaki")
@@ -134,23 +187,26 @@ else:
 
 ---
 
-## 📸 Hasil Pengujian
+# 📸 Hasil Pengujian
 
-Program telah diuji menggunakan tiga kondisi yang berbeda. Pengujian pertama menggunakan panjang sisi **5, 5, dan 5**, sehingga program menghasilkan **"Segitiga sama sisi"**.
-<img width="932" height="168" alt="Screenshot 2026-09-02 130032" src="https://github.com/user-attachments/assets/50ba710a-34fe-4716-bb72-98c9d17ccd24" />
+Program telah diuji menggunakan beberapa kombinasi panjang sisi untuk memastikan bahwa program dapat menentukan validitas dan jenis segitiga dengan benar.
 
-Pengujian kedua menggunakan panjang sisi **5, 5, dan 8**. Karena terdapat dua sisi yang memiliki panjang sama, program menghasilkan **"Segitiga sama kaki"**.
-<img width="925" height="158" alt="Screenshot 2026-09-02 125959" src="https://github.com/user-attachments/assets/287cd606-db22-45e8-8038-843a1980720a" />
+Pada pengujian pertama, digunakan sisi **5, 5, dan 5**. Ketiga sisi memenuhi syarat segitiga dan memiliki panjang yang sama, sehingga program menghasilkan **"Segitiga sama sisi"**.
 
-Pengujian ketiga menggunakan panjang sisi **4, 5, dan 6**. Karena ketiga sisi memiliki panjang yang berbeda, program menghasilkan **"Segitiga sembarang"**.
-<img width="917" height="140" alt="Screenshot 2026-09-02 130052" src="https://github.com/user-attachments/assets/9962483c-d88b-4f7f-8571-e8d44420d63b" />
+Pada pengujian kedua, digunakan sisi **5, 5, dan 8**. Ketiga sisi memenuhi syarat segitiga dan terdapat dua sisi yang sama, sehingga program menghasilkan **"Segitiga sama kaki"**.
 
-Berdasarkan hasil pengujian tersebut, program dapat menentukan jenis segitiga dengan benar sesuai dengan kondisi panjang ketiga sisinya.
+Pada pengujian ketiga, digunakan sisi **5, 6, dan 8**. Ketiga sisi memenuhi syarat segitiga dan memiliki panjang yang berbeda, sehingga program menghasilkan **"Segitiga sembarang"**.
+
+Pada pengujian keempat, digunakan sisi **2, 3, dan 10**. Karena jumlah dua sisi tidak lebih besar dari sisi ketiga, ketiga sisi tersebut tidak dapat membentuk segitiga. Program menghasilkan **"Ketiga sisi tersebut tidak dapat membentuk segitiga"**.
+
+Berdasarkan hasil pengujian tersebut, program dapat melakukan pengecekan validitas sekaligus menentukan jenis segitiga berdasarkan panjang ketiga sisinya.
 
 ---
 
-## 📌 Kesimpulan
+# 📌 Kesimpulan
 
-Berdasarkan program yang telah dibuat, dapat disimpulkan bahwa **logika matematika dapat diterapkan dalam pemrograman untuk menyelesaikan permasalahan sehari-hari maupun permasalahan dalam pembelajaran matematika**.
+Berdasarkan program yang telah dibuat, dapat disimpulkan bahwa konsep **logika matematika dan percabangan dalam pemrograman** dapat digunakan untuk menyelesaikan permasalahan dalam pembelajaran matematika.
 
-Pada program ini, konsep perbandingan panjang sisi digunakan bersama dengan operator logika dan percabangan untuk menentukan jenis segitiga. Dengan adanya program ini, proses menentukan jenis segitiga berdasarkan panjang sisinya dapat dilakukan dengan lebih cepat dan mudah.
+Program tidak hanya menentukan jenis segitiga berdasarkan panjang sisi, tetapi juga melakukan pengecekan terlebih dahulu menggunakan **syarat ketaksamaan segitiga**. Dengan demikian, program dapat membedakan antara tiga panjang sisi yang benar-benar dapat membentuk segitiga dan tiga panjang sisi yang tidak memenuhi syarat.
+
+Melalui program ini, konsep **perbandingan, operator logika, ketaksamaan, dan percabangan** dapat diterapkan secara langsung dalam sebuah permasalahan matematika.
